@@ -65,6 +65,7 @@ void rotary_encoder_update(rotary_encoder_t *encoder, uint8_t pin_a_state, uint8
             if (encoder->debounce_counter == 0) {
                 encoder->debounce_counter = DEBOUNCE_TICKS;
             }
+            encoder->button_state = button_state;
         } else if (encoder->debounce_counter > 0) {
             encoder->debounce_counter--;
             if (encoder->debounce_counter == 0) {
@@ -78,7 +79,6 @@ void rotary_encoder_update(rotary_encoder_t *encoder, uint8_t pin_a_state, uint8
                     }
                 }
             }
-            encoder->button_state = button_state;
         }
     }
 }
